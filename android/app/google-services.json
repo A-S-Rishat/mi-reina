@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "231387204330",
+    "project_id": "mi-reina-b3230",
+    "storage_bucket": "mi-reina-b3230.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:231387204330:android:26ff7cb6f194bc7628a593",
+        "android_client_info": {
+          "package_name": "com.mi_reina"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyApHWEqKpjqm7m0MPYvZ4FXGmbcL5tr9R0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
