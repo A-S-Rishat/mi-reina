@@ -12,12 +12,13 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   final database = FirebaseDatabase.instanceFor(
-  app: Firebase.app(),
-  databaseURL: "https://mi-reina-b3230-default-rtdb.asia-southeast1.firebasedatabase.app",
-).ref();
+    app: Firebase.app(),
+    databaseURL:
+        "https://mi-reina-b3230-default-rtdb.asia-southeast1.firebasedatabase.app",
+  ).ref();
 
-  String myUserId = "userB";     // 🔄 Change this if you're userA
-  String friendUserId = "userA"; // 🔄 The other device's ID
+  String myUserId = "userA";
+  String friendUserId = "userB";
 
   @override
   void initState() {
@@ -36,17 +37,17 @@ class _HomeState extends State<Home> {
 
   void listenForPokes() {
     database.child('pokes/$myUserId').onValue.listen((event) {
+      print("Listener triggered: ${event.snapshot.exists}");
       if (event.snapshot.exists) {
         final data = event.snapshot.value as Map;
         final from = data['from'];
         final timestamp = data['timestamp'];
 
         print("Received poke from $from at $timestamp");
-
-        // Vibrate
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text('Poke received from $from')));
         Vibration.vibrate(duration: 500);
-
-        // Optional: Clear after reading
         database.child('pokes/$myUserId').remove();
       }
     });
